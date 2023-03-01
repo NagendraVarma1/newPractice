@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task12</title>
+</head>
+<body>
+    <h1>Task 12</h1>
+    <form id="userForm" onsubmit='getUserDetails(event)'>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="username" required>
+        <label for="email">Email:</label>
+        <input type="text" name="emailId" id="email" required>
+        <label for="phone">Phone No:</label>
+        <input type="text" name="phoneNo" id="phone">
+        <input type="submit" value="Submit">
+    </form>
+    <ul id="listOfItems"></ul>
+    <script>
+        function getUserDetails(event){
+            event.preventDefault();
+
+            let name = event.target.username.value;
+            let email = event.target.emailId.value;
+            let phoneNumber = event.target.phoneNo.value;
+            
+            let myObj = {
+                name,email,phoneNumber
+            };
+            let serialized = JSON.stringify(myObj);
+            localStorage.setItem('Details', serialized);
+
+            show(myObj);
+        }
+
+        function show(myObj){
+            let ul=document.getElementById('listOfItems');
+            let li=document.createElement('li');
+            li.textContent= 'name:'+myObj.name+' '+'email: '+myObj.email+' '+'phone: '+myObj.phoneNumber;
+            ul.appendChild(li);
+        }
+    </script>
+</body>
+</html>
