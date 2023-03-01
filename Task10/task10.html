@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <title>Form</title>
+</head>
+<style>
+    label{
+        font-weight: bold;
+        background-color: #f4f4f4
+    }
+    input[type=text]{
+        background-color: aqua;
+        padding-left: 5px;
+        padding-right:70%;
+        padding-top:5px;
+        padding-bottom:5px;
+        margin-bottom: 25px;
+    }
+    
+</style>
+<body>
+    <div class="container">
+        <div class = "row">
+            <h1 style="margin-top:20px">Input data form</h1>
+        </div>
+    </div>
+     <div class="contianer">
+        <div id="main" class="card card-body" style="margin-left:150px; margin-top:50px; margin-right:550px">
+            <form id="list" onsubmit="saveToLocalStorage(event)">
+                <label for="name" class="details">Name: </label>
+                <input type="text" name="username" required>
+                <label for="email" class="details">Email: </label>
+                <input type="text" name="emailId" required>
+                <label for="phoneNo" class="details">Phone: </label>
+                <input type="text" name="phoneNo">
+                <input type="submit" class="btn btn-bg-success" value="Submit">
+            </form>
+        </div>
+    </div>
+    <script>
+
+        function saveToLocalStorage(event){
+            event.preventDefault();
+            let name=event.target.username;
+            let email =event.target.emailId;
+            let phoneNumber = event.target.phoneNo;
+
+            localStorage.setItem('name', name.value);
+            localStorage.setItem('email',email.value);
+            localStorage.setItem('phone number', phoneNumber.value);
+        }
+    </script>   
+</body>
+</html>
