@@ -1,13 +1,13 @@
-let form = document.getElementById('addForm')
+let form = document.getElementById('addForm');
 let itemList = document.getElementById('items')
-//form submit event
-form.addEventListener('submit', addItem);
-//remove event
+
+form.addEventListener('submit',addItem);
+
 itemList.addEventListener('click', removeItem);
 
 function addItem(e){
     e.preventDefault();
-
+    
     let newItem = document.getElementById('item').value;
     let li = document.createElement('li');
     li.className = 'list-group-item';
@@ -17,12 +17,15 @@ function addItem(e){
     deleteBtn.className = 'btn btn-danger btn-sm float-right delete';
     deleteBtn.appendChild(document.createTextNode('X'));
     li.appendChild(deleteBtn);
-    itemList.appendChild(li);
 
-    let editBtn = document.createElement('edit');
+    let editBtn = document.createElement('button');
     editBtn.className = 'btn btn-light btn-outline-dark btn-sm float-sm-right edit';
     editBtn.appendChild(document.createTextNode('Edit'));
     li.appendChild(editBtn);
+
+
+    itemList.appendChild(li);
+
 }
 
 function removeItem(e){
@@ -30,4 +33,5 @@ function removeItem(e){
         let li = e.target.parentElement;
         itemList.removeChild(li);
     }
+
 }
