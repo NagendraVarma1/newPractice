@@ -43,17 +43,3 @@ function show(obj) {
     li.append(editBtn);
     ul.appendChild(li);
 }
-
-window.addEventListener('load', () => {
-    axios.get("https://crudcrud.com/api/d8fe5b6630ae471aa8041ad996ed7b78/AppointmentList1")
-    .then((res) => {
-        for(let i=0; i<res.data.length;i++){
-            show(res.data[i])
-        }
-        
-    })
-    
-    .catch((err) => {
-        console.log(err);
-    })
-})
