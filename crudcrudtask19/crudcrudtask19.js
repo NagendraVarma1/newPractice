@@ -10,7 +10,7 @@ function deleteTheUserDetails(event){
         email,
         phonenumber
     }
-    axios.post("https://crudcrud.com/api/b38628e56c00475aa77863ed6ecc0bf1/AppointmentList3",obj)
+    axios.post("https://crudcrud.com/api/ff2cbf6bbcbb4d01bf7656b252f7cfa7/AppointmentList3",obj)
     .then((res) => {
         show(res.data);
     })
@@ -23,24 +23,27 @@ function deleteTheUserDetails(event){
 function show(obj) {
 
     let ul = document.getElementById('list');
-
-    axios.get("https://crudcrud.com/api/b38628e56c00475aa77863ed6ecc0bf1/AppointmentList3")
+    let li = document.createElement('li');
+    axios.get("https://crudcrud.com/api/ff2cbf6bbcbb4d01bf7656b252f7cfa7/AppointmentList3")
     .then((res) => {
-        const appointments = res;
-        for(let i=0; i<appointments.data.length;i++)
+        const appointments = res.data;
+        for(let i=0; i<appointments.length;i++)
         {
-            let appointment = appointments.data[i];
-            let li = document.createElement('li');
+            let appointment = appointments[i];
+            
             let dltBtn = document.createElement('button');
             dltBtn.textContent = 'Delete';
 
             dltBtn.onclick = () => {
-                axios.delete(`https://crudcrud.com/api/b38628e56c00475aa77863ed6ecc0bf1/AppointmentList3/${appointment._id}`)
-                .then((res) => {
+                axios.delete(`https://crudcrud.com/api/ff2cbf6bbcbb4d01bf7656b252f7cfa7/AppointmentList3/${appointment._id}`)
+                .then(() => {
                     ul.removeChild(li);
                 })
+                .catch((err) => {
+                    console.log(err)
+                })
+
             }
-            
             let editBtn = document.createElement('button');
             editBtn.textContent = 'Edit';
 
@@ -48,18 +51,10 @@ function show(obj) {
             li.append(dltBtn);
             li.append(editBtn);
             ul.appendChild(li)
+            
+            
         }
     })
 
     
 }
-
-window.addEventListener('load', () => {
-    axios.get("https://crudcrud.com/api/b38628e56c00475aa77863ed6ecc0bf1/AppointmentList3")
-    .then((res) => {
-        for(let i=0;i<res.data.length;i++)
-        {
-            show(res.data[i])
-        }
-    })
-})
