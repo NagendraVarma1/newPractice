@@ -36,6 +36,7 @@ function show(obj) {
         document.getElementById('name').value = obj.name;
         document.getElementById('email').value = obj.email;
         document.getElementById('phone').value = obj.phonenumber;
+        ul.removeChild(li);
     }
     li.textContent = `Name: ${obj.name}, Email Id: ${obj.email}, Phone No: ${obj.phonenumber}`;
     li.append(dltBtn);
