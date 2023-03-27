@@ -34,11 +34,12 @@ function show(obj){
 
     dltBtn.onclick = () => {
 
-        amount = amount - parseInt(obj.price);
-        span.textContent = `Rs. ${amount}`
+        
         axios.delete(`https://crudcrud.com/api/a84e950c519c4aada2ce80adb754ad43/ProductList/${obj._id}`)
         .then(() => {
-            ul.removeChild(li)
+            ul.removeChild(li);
+            amount = amount - parseInt(obj.price);
+            span.textContent = `Rs. ${amount}`
         })
         .catch((err) => {
             console.log(err)
