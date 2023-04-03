@@ -33,7 +33,7 @@ function show(obj){
     dltBtn.className = "btn btn-sm btn-danger mx-5"
 
     dltBtn.onclick = () => {
-        
+
         axios.delete(`https://crudcrud.com/api/e57931b35d194271a69460ef77a19cac/ProductList/${obj._id}`)
         .then(() => {
             ul.removeChild(li);
@@ -46,7 +46,7 @@ function show(obj){
     }
     li.textContent = `Product Name: ${obj.name}, Price: ${obj.price}`;
     li.append(dltBtn);
-    ul.append(li);
+    ul.appendChild(li);
 }
 
 window.addEventListener('load', () => {
