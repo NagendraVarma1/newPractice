@@ -9,7 +9,7 @@ function getTheProductDetails(event){
         name
         
     }
-    axios.post("https://crudcrud.com/api/a84e950c519c4aada2ce80adb754ad43/ProductList", obj)
+    axios.post("https://crudcrud.com/api/e57931b35d194271a69460ef77a19cac/ProductList", obj)
     .then((res) => {
         show(res.data);
     })
@@ -33,9 +33,8 @@ function show(obj){
     dltBtn.className = "btn btn-sm btn-danger mx-5"
 
     dltBtn.onclick = () => {
-
         
-        axios.delete(`https://crudcrud.com/api/a84e950c519c4aada2ce80adb754ad43/ProductList/${obj._id}`)
+        axios.delete(`https://crudcrud.com/api/e57931b35d194271a69460ef77a19cac/ProductList/${obj._id}`)
         .then(() => {
             ul.removeChild(li);
             amount = amount - parseInt(obj.price);
@@ -51,7 +50,7 @@ function show(obj){
 }
 
 window.addEventListener('load', () => {
-    axios.get("https://crudcrud.com/api/a84e950c519c4aada2ce80adb754ad43/ProductList")
+    axios.get("https://crudcrud.com/api/e57931b35d194271a69460ef77a19cac/ProductList")
     .then((res) => {
         let data = res.data;
         for(let i=0;i<data.length;i++)
